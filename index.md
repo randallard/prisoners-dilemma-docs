@@ -21,10 +21,24 @@ This app allows users to:
 - Track results and analyze outcomes
 - Learn about game theory concepts
 
+## Latest Development Update
+{: .fs-5 }
+
+{% assign latest_entry = site.html_pages | where: "parent", "Development Journal" | sort: "date" | reverse | first %}
+{% if latest_entry %}
+### [{{ latest_entry.title }}]({{ latest_entry.url | relative_url }})
+**Date:** {{ latest_entry.date | date: "%B %d, %Y" }}
+
+{{ latest_entry.excerpt | truncate: 150 }}
+
+[View latest update]({{ latest_entry.url | relative_url }}){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
+[Development Journal]({{ '/docs/development-journal' | relative_url }}){: .btn .fs-5 .mb-4 .mb-md-0 .mr-2 }
+{% else %}
+Development journal entries coming soon!
+
+[Development Journal]({{ '/docs/development-journal' | relative_url }}){: .btn .fs-5 .mb-4 .mb-md-0 .mr-2 }
+{% endif %}
+
 ## Getting Started
 
 To begin using or developing the app, check out the [Getting Started](docs/getting-started) guide.
-
-## Development Status
-
-This project is currently under active development. You can follow our progress in the [Development Journal](docs/development-journal).
