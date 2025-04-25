@@ -43,3 +43,30 @@ This documentation is built using [Just the Docs](https://just-the-docs.github.i
    ```bash
    git clone https://github.com/randallard/prisoners-dilemma-docs.git
    cd prisoners-dilemma-docs
+   ```
+
+2. Install dependencies
+   ```bash
+   bundle install
+   ```
+
+3. Run the development server
+   ```bash
+   bundle exec jekyll serve
+   ```
+
+4. Open your browser and navigate to `http://localhost:4000`
+
+## Contributing to the Documentation
+
+Contributions to improve the documentation are welcome. Please feel free to submit issues or pull requests.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-documentation`)
+3. Commit your changes (`git commit -m 'Add some amazing documentation'`)
+4. Push to the branch (`git push origin feature/amazing-documentation`)
+5. Open a Pull Request
+
+## License
+
+This documentation is distributed under the [MIT License](LICENSE).
