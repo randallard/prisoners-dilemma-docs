@@ -3,13 +3,14 @@ layout: default
 title: "Journal Entry #[NUMBER]"
 parent: Development Journal
 nav_order: [REVERSE_CHRONOLOGICAL_ORDER]
-date: YYYY-MM-DD
+# Replace this comment with an actual date when using the template
+# date: 2025-04-25
 ---
 
 # Journal Entry #[NUMBER] - [SHORT_TITLE]
 {: .no_toc }
 
-**Date:** YYYY-MM-DD
+**Date:** <!-- Add date here when using template -->
 {: .fs-5 }
 
 <details open markdown="block">
