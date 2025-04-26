@@ -22,6 +22,7 @@ prisoners-dilemma-docs/
 ├── index.md                    # Homepage
 ├── 404.html                    # 404 page
 └── docs/                       # Documentation pages
+    ├── project-plan-and-status.md  # Project plan and current status tracking
     ├── getting-started.md      # Getting started guide
     ├── development-journal.md  # Journal index page we created
     ├── development-journal/    # New directory for journal entries

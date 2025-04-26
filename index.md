@@ -21,6 +21,13 @@ This app allows users to:
 - Track results and analyze outcomes
 - Learn about game theory concepts
 
+## Project Status
+{: .fs-5 }
+
+Want to know where we are in development? Check our [Project Plan & Status]({{ '/docs/project-plan-and-status' | relative_url }}) page to see our current progress, upcoming milestones, and development roadmap.
+
+[View Project Status]({{ '/docs/project-plan-and-status' | relative_url }}){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
+
 ## Latest Development Update
 {: .fs-5 }
 

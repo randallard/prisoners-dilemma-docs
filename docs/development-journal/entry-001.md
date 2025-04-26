@@ -86,4 +86,4 @@ Project initialized with basic documentation structure using Just the Docs theme
 
 **Hours Logged:** 6
 
-**Tags:** initialization, documentation, planning
+**Tags:** initialization, documentation, planningco
