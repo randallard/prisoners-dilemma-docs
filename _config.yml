@@ -1,9 +1,9 @@
 title: Prisoner's Dilemma App
 description: Documentation for developing and playing the Prisoner's Dilemma game app
-baseurl: "/prisoners-dilemma-docs" # the subpath of your site, e.g. /blog
-url: "https://randallard.github.io" # the base hostname & protocol
-
 remote_theme: just-the-docs/just-the-docs
+
+baseurl: "/prisoners-dilemma-docs" # the subpath of your site
+url: "https://randallard.github.io" # the base hostname & protocol
 
 # Color scheme
 color_scheme: dark
