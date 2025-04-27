@@ -37,9 +37,10 @@ These user stories are prioritized to ensure we focus on the most important feat
 - ⬜ *(Future)* Full Prisoner's Dilemma rules and scoring
 
 ### 2. Social Features
-- ⬜ Connect with friends via shareable links
+- ⬜ Connect with friends via shareable links (using friends-connect API)
 - ⬜ Maintain a connections list with status indicators
 - ⬜ Custom naming of connections
+- ⬜ Connection request management (creation and deletion)
 
 ### 3. Data Management
 - ⬜ Local storage for all game data
@@ -86,6 +87,7 @@ These user stories are prioritized to ensure we focus on the most important feat
 |------|----------|-----------|
 | April 26, 2025 | Created dedicated project plan page | To maintain a central record of project status and plans |
 | April 26, 2025 | Defined initial user stories | To establish clear requirements and development priorities |
+| April 26, 2025 | Selected friends-connect API | To leverage an existing solution for player connections rather than building from scratch |
 
 ## Next Steps
 
@@ -95,9 +97,18 @@ These user stories are prioritized to ensure we focus on the most important feat
 4. Create UI wireframes
 5. Begin implementation of highest priority user stories
 
+## Technology Choices
+
+### API Selection
+We will use the **friends-connect** API for handling player connections. This is a Rust library specifically designed for connecting players in game applications.
+
+**Source**: [github.com/randallard/friends-connect](https://github.com/randallard/friends-connect)
+
+**Description**: A Rust library for connecting with friends to play games, providing the server-side functionality we need for managing connection requests and active connections.
+
 ## Open Questions
 
-- Which technology stack will best support our local-first approach?
+- Which frontend technology stack will best support our local-first approach?
 - Should we prioritize web or mobile development?
 - How will we handle offline gameplay?
-- What will the server component for connection management look like?
+- What specific features from the friends-connect API will we leverage?
