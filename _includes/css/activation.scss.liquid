@@ -159,7 +159,14 @@
         {%- assign nav_levels = nav_levels | push: 1 -%}
       {%- endif -%}
 
-    {%- assign nav_levels = nav_levels | where_exp: "item", "item != 0" -%}
+    {%- assign nav_levels_filtered = "" | split: "" -%}
+    {%- for item in nav_levels -%}
+      {%- assign item_int = item | plus: 0 -%}
+      {%- if item_int > 0 -%}
+        {%- assign nav_levels_filtered = nav_levels_filtered | push: item -%}
+      {%- endif -%}
+    {%- endfor -%}
+    {%- assign nav_levels = nav_levels_filtered -%}
 
       {%- assign nav_index = nav_levels[0] | plus: nav_list_count -%}
       {%- if nav_levels[-1] == 0 or forloop.first -%}
