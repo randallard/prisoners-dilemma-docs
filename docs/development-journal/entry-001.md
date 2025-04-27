@@ -2,7 +2,7 @@
 layout: default
 title: "Journal Entry #1"
 parent: Development Journal
-nav_order: 10000
+nav_order: [REVERSE_CHRONOLOGICAL_ORDER]
 date: 2025-04-25
 ---
 
