@@ -30,6 +30,7 @@ prisoners-dilemma-docs/
     │   └── template.md         # Template for future entries
     ├── technical/              # Technical documentation
     │   ├── index.md            # Technical overview
+    │   ├── user-stories.md     # Architecture details
     │   ├── architecture.md     # Architecture details
     │   ├── frontend.md         # Frontend documentation
     │   ├── backend.md          # Backend documentation
