@@ -11,7 +11,7 @@ This document serves as a living record of our project plan, current status, and
 
 ## Current Status
 
-**Phase**: Initial Planning → Setup & Development Environment  
+**Phase**: Setup & Development Environment → Core Implementation  
 **Last Updated**: April 27, 2025
 
 ## Project Vision
@@ -25,6 +25,10 @@ This project follows **Test Driven Development (TDD)** principles with a **Red-G
 1. **Red**: Write a failing test that defines the expected behavior
 2. **Green**: Write the minimal code needed to make the test pass
 3. **Refactor**: Improve the code quality while maintaining passing tests
+
+We've established a **hybrid testing strategy** with:
+- **Vitest**: For fast unit testing of logic functions
+- **@web/test-runner**: For browser-based component testing
 
 We will commit to making the smallest possible code changes with each iteration, ensuring:
 - Every feature is thoroughly tested before implementation
@@ -70,21 +74,23 @@ These user stories are prioritized to ensure we focus on the most important feat
 
 ## Development Roadmap
 
-### Phase 1: Planning & Setup ✅
-- ✅ Create project documentation structure
-- ✅ Define user stories and requirements
-- ✅ Define architecture and technology stack
+### Phase 1: Planning & Setup ✓
+- ✓ Create project documentation structure
+- ✓ Define user stories and requirements
+- ✓ Define architecture and technology stack
+- ✓ Set up development environment with TDD tooling
+- ✓ Configure dual testing frameworks (Vitest and @web/test-runner)
+- ✓ Integrate Tailwind CSS with Vite
 - ⬜ Create initial wireframes/mockups
-- ⬜ Set up development environment with TDD tooling
 
 ### Phase 2: Core Implementation
-- ⬜ **Test suite setup**: Configure testing framework and write first tests
-- ⬜ Implement player registration (User Stories #1-2)
-- ⬜ Set up local storage functionality (User Stories #2-4)
+- ⬜ **Player Registration Component**: Implement following TDD approach (User Stories #1-2)
+- ⬜ Set up local storage functionality with tests (User Stories #2-4)
 - ⬜ Create connection mechanism (User Stories #5-9)
 - ⬜ Implement basic game mechanics (User Stories #11-12)
 
 ### Phase 3: Testing & Refinement
+- ⬜ Set up CI/CD pipeline for automated testing
 - ⬜ Test with small user group
 - ⬜ Refine UI based on feedback
 - ⬜ Optimize performance
@@ -100,6 +106,9 @@ These user stories are prioritized to ensure we focus on the most important feat
 
 | Date | Decision | Rationale |
 |------|----------|-----------|
+| April 27, 2025 | Adopted dual testing strategy with Vitest and @web/test-runner | To leverage Vitest's speed for unit tests and @web/test-runner's browser environment for component tests |
+| April 27, 2025 | Switched to Vite build system with Tailwind CSS v4.0 | To improve developer experience with faster builds and simplified Tailwind integration |
+| April 27, 2025 | Maintained strict TypeScript configuration | To ensure type safety throughout the project and prevent bugs |
 | April 27, 2025 | Adopted Test Driven Development (TDD) with Red-Green-Refactor | To ensure quality code, prevent regressions, and provide clear development path |
 | April 26, 2025 | Selected Lit + Open WC + Tailwind CSS | For optimal web component development with modern styling approach |
 | April 26, 2025 | Created dedicated project plan page | To maintain a central record of project status and plans |
@@ -108,23 +117,27 @@ These user stories are prioritized to ensure we focus on the most important feat
 
 ## Next Steps
 
-1. Set up project scaffold using Open WC
-2. Configure testing environment with Jest and Web Test Runner
-3. Write first failing tests for player registration component
-4. Implement minimal code to pass tests
-5. Refactor and iterate
+1. Write failing tests for player registration component
+2. Implement minimal player registration component to pass tests
+3. Configure local storage persistence with tests
+4. Refactor and iterate on the registration flow
+5. Begin connection mechanism implementation
 
 ## Technology Choices
 
-### Development Approach
-We will follow **Test Driven Development** using the testing tools provided by Open WC:
-- Web Test Runner for in-browser component testing
-- Jest for unit testing
-- Storybook for component development and visual testing
+### Build System
+- **Build Tool**: Vite
+- **CSS Framework**: Tailwind CSS v4.0 with `@tailwindcss/vite` plugin
+- **Language**: TypeScript with strict type checking
+
+### Testing Strategy
+- **Unit Testing**: Vitest (for pure logic functions)
+- **Component Testing**: @web/test-runner (for browser-based component testing)
+- **Test Helpers**: @open-wc/testing for component fixtures and assertions
 
 ### Frontend Technologies
 - **Web Components**: Lit
-- **Best Practices**: Open WC
+- **Best Practices**: Open WC principles (adapted for Vite)
 - **Styling**: Tailwind CSS
 
 ### API Selection
@@ -136,7 +149,7 @@ We will use the **friends-connect** API for handling player connections. This is
 
 ## Open Questions
 
-- How will we measure and maintain test coverage?
-- Should we prioritize web or mobile development?
-- How will we handle offline gameplay?
-- What specific features from the friends-connect API will we leverage?
+- What is our target test coverage percentage?
+- How will we handle cross-browser compatibility testing?
+- Should we automate accessibility testing?
+- How will we handle edge cases like connection failures?
