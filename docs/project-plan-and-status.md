@@ -11,12 +11,26 @@ This document serves as a living record of our project plan, current status, and
 
 ## Current Status
 
-**Phase**: Initial Planning  
-**Last Updated**: April 26, 2025
+**Phase**: Initial Planning → Setup & Development Environment  
+**Last Updated**: April 27, 2025
 
 ## Project Vision
 
 To create an interactive application that allows friends to play the Prisoner's Dilemma game, learn about game theory, and analyze strategies and outcomes.
+
+## Development Approach
+
+This project follows **Test Driven Development (TDD)** principles with a **Red-Green-Refactor** workflow:
+
+1. **Red**: Write a failing test that defines the expected behavior
+2. **Green**: Write the minimal code needed to make the test pass
+3. **Refactor**: Improve the code quality while maintaining passing tests
+
+We will commit to making the smallest possible code changes with each iteration, ensuring:
+- Every feature is thoroughly tested before implementation
+- Code remains clean, maintainable, and follows best practices
+- Technical debt is minimized through continuous refactoring
+- Development progress is measurable through test coverage
 
 ## User Stories
 
@@ -56,14 +70,15 @@ These user stories are prioritized to ensure we focus on the most important feat
 
 ## Development Roadmap
 
-### Phase 1: Planning & Setup
+### Phase 1: Planning & Setup ✅
 - ✅ Create project documentation structure
 - ✅ Define user stories and requirements
-- ⬜ Define architecture and technology stack
+- ✅ Define architecture and technology stack
 - ⬜ Create initial wireframes/mockups
-- ⬜ Set up development environment
+- ⬜ Set up development environment with TDD tooling
 
 ### Phase 2: Core Implementation
+- ⬜ **Test suite setup**: Configure testing framework and write first tests
 - ⬜ Implement player registration (User Stories #1-2)
 - ⬜ Set up local storage functionality (User Stories #2-4)
 - ⬜ Create connection mechanism (User Stories #5-9)
@@ -85,19 +100,32 @@ These user stories are prioritized to ensure we focus on the most important feat
 
 | Date | Decision | Rationale |
 |------|----------|-----------|
+| April 27, 2025 | Adopted Test Driven Development (TDD) with Red-Green-Refactor | To ensure quality code, prevent regressions, and provide clear development path |
+| April 26, 2025 | Selected Lit + Open WC + Tailwind CSS | For optimal web component development with modern styling approach |
 | April 26, 2025 | Created dedicated project plan page | To maintain a central record of project status and plans |
 | April 26, 2025 | Defined initial user stories | To establish clear requirements and development priorities |
 | April 26, 2025 | Selected friends-connect API | To leverage an existing solution for player connections rather than building from scratch |
 
 ## Next Steps
 
-1. Define technical architecture
-2. Choose frontend framework
-3. Design data model for local storage
-4. Create UI wireframes
-5. Begin implementation of highest priority user stories
+1. Set up project scaffold using Open WC
+2. Configure testing environment with Jest and Web Test Runner
+3. Write first failing tests for player registration component
+4. Implement minimal code to pass tests
+5. Refactor and iterate
 
 ## Technology Choices
+
+### Development Approach
+We will follow **Test Driven Development** using the testing tools provided by Open WC:
+- Web Test Runner for in-browser component testing
+- Jest for unit testing
+- Storybook for component development and visual testing
+
+### Frontend Technologies
+- **Web Components**: Lit
+- **Best Practices**: Open WC
+- **Styling**: Tailwind CSS
 
 ### API Selection
 We will use the **friends-connect** API for handling player connections. This is a Rust library specifically designed for connecting players in game applications.
@@ -108,7 +136,7 @@ We will use the **friends-connect** API for handling player connections. This is
 
 ## Open Questions
 
-- Which frontend technology stack will best support our local-first approach?
+- How will we measure and maintain test coverage?
 - Should we prioritize web or mobile development?
 - How will we handle offline gameplay?
 - What specific features from the friends-connect API will we leverage?
