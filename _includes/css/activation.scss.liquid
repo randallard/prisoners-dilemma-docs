@@ -159,7 +159,7 @@
         {%- assign nav_levels = nav_levels | push: 1 -%}
       {%- endif -%}
 
-    {%- assign nav_levels = nav_levels | map: "to_i" | where_exp: "item", "item >= 1" -%}
+    {%- assign nav_levels = nav_levels | where_exp: "item", "item != 0" -%}
 
       {%- assign nav_index = nav_levels[0] | plus: nav_list_count -%}
       {%- if nav_levels[-1] == 0 or forloop.first -%}
