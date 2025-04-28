@@ -11,8 +11,8 @@ This document serves as a living record of our project plan, current status, and
 
 ## Current Status
 
-**Phase**: Setup & Development Environment → Core Implementation  
-**Last Updated**: April 27, 2025
+**Phase**: Core Implementation (Player Registration Component)  
+**Last Updated**: April 28, 2025
 
 ## Project Vision
 
@@ -61,12 +61,13 @@ These user stories are prioritized to ensure we focus on the most important feat
 - ⬜ Connection request management (creation and deletion)
 
 ### 3. Data Management
-- ⬜ Local storage for all game data
+- 🔄 Local storage for all game data (in progress - player registration)
 - ⬜ Track game state and history with each connection
 - ⬜ Store player preferences
 - ⬜ Downloadable backup and restore functionality
 
 ### 4. Minimal Viable Product
+- 🔄 Players can register with a name (in progress)
 - ⬜ Players can connect via shareable links
 - ⬜ Basic game screen shows player names
 - ⬜ Count and display number of game opens per player
@@ -81,10 +82,14 @@ These user stories are prioritized to ensure we focus on the most important feat
 - ✓ Set up development environment with TDD tooling
 - ✓ Configure dual testing frameworks (Vitest and @web/test-runner)
 - ✓ Integrate Tailwind CSS with Vite
+- ✓ Create .gitignore for project
 - ⬜ Create initial wireframes/mockups
 
 ### Phase 2: Core Implementation
-- ⬜ **Player Registration Component**: Implement following TDD approach (User Stories #1-2)
+- 🔄 **Player Registration Component**: Implement following TDD approach (User Stories #1-2)
+  - ✓ Create failing tests for player registration (Red phase)
+  - ⬜ Implement minimal player registration to pass tests (Green phase)
+  - ⬜ Refactor player registration component (Refactor phase)
 - ⬜ Set up local storage functionality with tests (User Stories #2-4)
 - ⬜ Create connection mechanism (User Stories #5-9)
 - ⬜ Implement basic game mechanics (User Stories #11-12)
@@ -106,6 +111,9 @@ These user stories are prioritized to ensure we focus on the most important feat
 
 | Date | Decision | Rationale |
 |------|----------|-----------|
+| April 28, 2025 | Fixed npm script configuration | To support dual testing strategy and enable proper TDD workflow |
+| April 28, 2025 | Created .gitignore file | To ensure proper version control with appropriate exclusions |
+| April 28, 2025 | Started with player registration tests | To establish TDD workflow and implement fundamental component first |
 | April 27, 2025 | Adopted dual testing strategy with Vitest and @web/test-runner | To leverage Vitest's speed for unit tests and @web/test-runner's browser environment for component tests |
 | April 27, 2025 | Switched to Vite build system with Tailwind CSS v4.0 | To improve developer experience with faster builds and simplified Tailwind integration |
 | April 27, 2025 | Maintained strict TypeScript configuration | To ensure type safety throughout the project and prevent bugs |
@@ -117,11 +125,11 @@ These user stories are prioritized to ensure we focus on the most important feat
 
 ## Next Steps
 
-1. Write failing tests for player registration component
-2. Implement minimal player registration component to pass tests
-3. Configure local storage persistence with tests
-4. Refactor and iterate on the registration flow
-5. Begin connection mechanism implementation
+1. Implement minimal player registration component to pass tests (Green phase)
+2. Refactor player registration component for better design and usability
+3. Set up local storage service with appropriate tests
+4. Begin connection mechanism implementation
+5. Create basic game screen layout
 
 ## Technology Choices
 
