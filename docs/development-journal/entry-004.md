@@ -2,7 +2,7 @@
 layout: default
 title: "Journal Entry #4"
 parent: Development Journal
-nav_order: 1
+nav_order: [REVERSE_CHRONOLOGICAL_ORDER]
 date: 2025-04-28
 ---
 
@@ -29,7 +29,6 @@ Core implementation phase begun. Successfully setup testing infrastructure and c
 
 - Fixed npm script configuration in package.json
 - Successfully ran test suite for initial player registration component
-- Created proper .gitignore file for project
 - Verified development environment is functioning correctly
 - Established first TDD cycle with failing tests (Red phase)
 
