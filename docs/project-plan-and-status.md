@@ -12,7 +12,7 @@ This document serves as a living record of our project plan, current status, and
 ## Current Status
 
 **Phase**: Core Implementation (Player Registration Component)  
-**Last Updated**: April 28, 2025
+**Last Updated**: April 30, 2025
 
 ## Project Vision
 
@@ -88,7 +88,7 @@ These user stories are prioritized to ensure we focus on the most important feat
 ### Phase 2: Core Implementation
 - 🔄 **Player Registration Component**: Implement following TDD approach (User Stories #1-2)
   - ✓ Create failing tests for player registration (Red phase)
-  - ⬜ Implement minimal player registration to pass tests (Green phase)
+  - ✓ Implement minimal player registration to pass tests (Green phase)
   - ⬜ Refactor player registration component (Refactor phase)
 - ⬜ Set up local storage functionality with tests (User Stories #2-4)
 - ⬜ Create connection mechanism (User Stories #5-9)
@@ -111,6 +111,9 @@ These user stories are prioritized to ensure we focus on the most important feat
 
 | Date | Decision | Rationale |
 |------|----------|-----------|
+| April 30, 2025 | Added explicit Shadow DOM configuration | To ensure consistent component testing with proper element access |
+| April 30, 2025 | Used explicit Mocha imports in test files | To provide proper TypeScript type checking for test functions |
+| April 30, 2025 | Established wait patterns for component tests | To ensure proper handling of LitElement rendering cycle in tests |
 | April 28, 2025 | Fixed npm script configuration | To support dual testing strategy and enable proper TDD workflow |
 | April 28, 2025 | Created .gitignore file | To ensure proper version control with appropriate exclusions |
 | April 28, 2025 | Started with player registration tests | To establish TDD workflow and implement fundamental component first |
@@ -125,9 +128,9 @@ These user stories are prioritized to ensure we focus on the most important feat
 
 ## Next Steps
 
-1. Implement minimal player registration component to pass tests (Green phase)
-2. Refactor player registration component for better design and usability
-3. Set up local storage service with appropriate tests
+1. Refactor player registration component for better design and usability
+2. Set up local storage service with appropriate tests
+3. Integrate player registration with local storage
 4. Begin connection mechanism implementation
 5. Create basic game screen layout
 
