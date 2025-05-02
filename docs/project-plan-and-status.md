@@ -12,7 +12,7 @@ This document serves as a living record of our project plan, current status, and
 ## Current Status
 
 **Phase**: Core Implementation (Player Registration Component)  
-**Last Updated**: April 30, 2025
+**Last Updated**: May 1, 2025
 
 ## Project Vision
 
@@ -111,6 +111,8 @@ These user stories are prioritized to ensure we focus on the most important feat
 
 | Date | Decision | Rationale |
 |------|----------|-----------|
+| May 1, 2025 | Updated to Tailwind CSS v4 with dedicated PostCSS plugin | To fix build configuration and leverage the latest Tailwind capabilities |
+| May 1, 2025 | Used .cjs extension for configuration files | To explicitly mark CommonJS modules in an ES module project |
 | April 30, 2025 | Added explicit Shadow DOM configuration | To ensure consistent component testing with proper element access |
 | April 30, 2025 | Used explicit Mocha imports in test files | To provide proper TypeScript type checking for test functions |
 | April 30, 2025 | Established wait patterns for component tests | To ensure proper handling of LitElement rendering cycle in tests |
@@ -138,7 +140,7 @@ These user stories are prioritized to ensure we focus on the most important feat
 
 ### Build System
 - **Build Tool**: Vite
-- **CSS Framework**: Tailwind CSS v4.0 with `@tailwindcss/vite` plugin
+- **CSS Framework**: Tailwind CSS v4.0 with `@tailwindcss/postcss` plugin
 - **Language**: TypeScript with strict type checking
 
 ### Testing Strategy

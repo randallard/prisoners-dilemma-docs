@@ -82,7 +82,7 @@ Successfully fixed Shadow DOM access issues in player registration component tes
 - Explicit imports in each test file
 - Disable TypeScript errors for globals
 
-**Decision:** Use explicit imports from Mocha in test files.
+**Decision:** Use explicit imports from Mocha in test files failed - switched to global.d.ts declarations
 
 **Rationale:**
 - Provides proper TypeScript type checking
