@@ -111,6 +111,7 @@ These user stories are prioritized to ensure we focus on the most important feat
 
 <details>
 <summary>Click to expand/collapse</summary>
+<div markdown="1">
 
 | Date | Decision | Rationale |
 |------|----------|-----------|
@@ -133,6 +134,7 @@ These user stories are prioritized to ensure we focus on the most important feat
 | April 26, 2025 | Defined initial user stories | To establish clear requirements and development priorities |
 | April 26, 2025 | Selected friends-connect API | To leverage an existing solution for player connections rather than building from scratch |
 
+</div>
 </details>
 
 ## Next Steps
