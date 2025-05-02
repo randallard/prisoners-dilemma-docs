@@ -11,8 +11,8 @@ This document serves as a living record of our project plan, current status, and
 
 ## Current Status
 
-**Phase**: Core Implementation (Player Registration Component)  
-**Last Updated**: May 1, 2025
+**Phase**: Core Implementation (Player Registration Component - Green Phase Complete)  
+**Last Updated**: May 2, 2025
 
 ## Project Vision
 
@@ -67,7 +67,7 @@ These user stories are prioritized to ensure we focus on the most important feat
 - ⬜ Downloadable backup and restore functionality
 
 ### 4. Minimal Viable Product
-- 🔄 Players can register with a name (in progress)
+- ✓ Players can register with a name (Green phase completed)
 - ⬜ Players can connect via shareable links
 - ⬜ Basic game screen shows player names
 - ⬜ Count and display number of game opens per player
@@ -111,6 +111,8 @@ These user stories are prioritized to ensure we focus on the most important feat
 
 | Date | Decision | Rationale |
 |------|----------|-----------|
+| May 2, 2025 | Adapted tests to trim whitespace before assertions | To maintain readable component templates while ensuring reliable tests |
+| May 2, 2025 | Created dedicated CommonJS script for Tailwind generation | To resolve TypeScript compatibility issues with ES modules |
 | May 1, 2025 | Updated to Tailwind CSS v4 with dedicated PostCSS plugin | To fix build configuration and leverage the latest Tailwind capabilities |
 | May 1, 2025 | Used .cjs extension for configuration files | To explicitly mark CommonJS modules in an ES module project |
 | April 30, 2025 | Added explicit Shadow DOM configuration | To ensure consistent component testing with proper element access |
@@ -130,7 +132,7 @@ These user stories are prioritized to ensure we focus on the most important feat
 
 ## Next Steps
 
-1. Refactor player registration component for better design and usability
+1. Complete the Refactor phase for player registration component
 2. Set up local storage service with appropriate tests
 3. Integrate player registration with local storage
 4. Begin connection mechanism implementation
@@ -142,16 +144,18 @@ These user stories are prioritized to ensure we focus on the most important feat
 - **Build Tool**: Vite
 - **CSS Framework**: Tailwind CSS v4.0 with `@tailwindcss/postcss` plugin
 - **Language**: TypeScript with strict type checking
+- **Build Scripts**: CommonJS (.cjs) for build-time utilities
 
 ### Testing Strategy
 - **Unit Testing**: Vitest (for pure logic functions)
 - **Component Testing**: @web/test-runner (for browser-based component testing)
 - **Test Helpers**: @open-wc/testing for component fixtures and assertions
+- **Text Content Testing**: Use `.trim()` for consistent assertions
 
 ### Frontend Technologies
 - **Web Components**: Lit
 - **Best Practices**: Open WC principles (adapted for Vite)
-- **Styling**: Tailwind CSS
+- **Styling**: Tailwind CSS with dedicated build script
 
 ### API Selection
 We will use the **friends-connect** API for handling player connections. This is a Rust library specifically designed for connecting players in game applications.
