@@ -109,6 +109,9 @@ These user stories are prioritized to ensure we focus on the most important feat
 
 ## Key Decisions & Notes
 
+<details>
+<summary>Click to expand/collapse</summary>
+
 | Date | Decision | Rationale |
 |------|----------|-----------|
 | May 2, 2025 | Adapted tests to trim whitespace before assertions | To maintain readable component templates while ensuring reliable tests |
@@ -129,6 +132,8 @@ These user stories are prioritized to ensure we focus on the most important feat
 | April 26, 2025 | Created dedicated project plan page | To maintain a central record of project status and plans |
 | April 26, 2025 | Defined initial user stories | To establish clear requirements and development priorities |
 | April 26, 2025 | Selected friends-connect API | To leverage an existing solution for player connections rather than building from scratch |
+
+</details>
 
 ## Next Steps
 
