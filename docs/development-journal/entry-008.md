@@ -90,7 +90,7 @@ Successfully fixed build configuration issues with Tailwind CSS v4 integration i
 - Avoids unnecessary project restructuring
 
 ### Also - had to revisit type devinitions for beforeEach
-although visual studio accepted the top of file declaration, the compiler didn't so I switched back to global.d.ts declarations
+although visual studio accepted the top of file declaration, the compiler didn't so I switched back to global.d.ts declarationsod
 
 ## Next Actions
 
