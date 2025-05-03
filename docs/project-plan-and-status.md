@@ -11,8 +11,8 @@ This document serves as a living record of our project plan, current status, and
 
 ## Current Status
 
-**Phase**: Core Implementation (Player Registration Component - Green Phase Complete)  
-**Last Updated**: May 2, 2025
+**Phase**: Core Implementation (Data Management/Local Storage Implementation Complete)  
+**Last Updated**: May 3, 2025
 
 ## Project Vision
 
@@ -50,8 +50,8 @@ These user stories are prioritized to ensure we focus on the most important feat
 
 ### 1. Game Mechanics
 - ⬜ Simple initial version showing "The Game" screen
-- ⬜ Display of player names
-- ⬜ Counter showing how many times each player has opened the game
+- ✓ Display of player names
+- ✓ Counter showing how many times each player has opened the game
 - ⬜ *(Future)* Full Prisoner's Dilemma rules and scoring
 
 ### 2. Social Features
@@ -61,17 +61,17 @@ These user stories are prioritized to ensure we focus on the most important feat
 - ⬜ Connection request management (creation and deletion)
 
 ### 3. Data Management
-- 🔄 Local storage for all game data (in progress - player registration)
+- ✓ Local storage for all game data (player registration & stats complete)
 - ⬜ Track game state and history with each connection
 - ⬜ Store player preferences
 - ⬜ Downloadable backup and restore functionality
 
 ### 4. Minimal Viable Product
-- ✓ Players can register with a name (Green phase completed)
+- ✓ Players can register with a name
 - ⬜ Players can connect via shareable links
-- ⬜ Basic game screen shows player names
-- ⬜ Count and display number of game opens per player
-- ⬜ Local data persistence
+- ✓ Basic game screen shows player names
+- ✓ Count and display number of game opens per player
+- ✓ Local data persistence
 
 ## Development Roadmap
 
@@ -86,11 +86,18 @@ These user stories are prioritized to ensure we focus on the most important feat
 - ⬜ Create initial wireframes/mockups
 
 ### Phase 2: Core Implementation
-- 🔄 **Player Registration Component**: Implement following TDD approach (User Stories #1-2)
+- ✓ **Player Registration Component**: Implement following TDD approach (User Stories #1-2)
   - ✓ Create failing tests for player registration (Red phase)
   - ✓ Implement minimal player registration to pass tests (Green phase)
-  - ⬜ Refactor player registration component (Refactor phase)
-- ⬜ Set up local storage functionality with tests (User Stories #2-4)
+  - ✓ Refactor player registration component (Refactor phase)
+- ✓ Set up local storage functionality with tests (User Stories #2-4)
+  - ✓ Create PlayerStorageService with comprehensive tests
+  - ✓ Implement localStorage persistence for player data
+  - ✓ Track app usage statistics (open count)
+- ✓ Integrate player storage with game app
+  - ✓ Display player info and open count in game screen
+  - ✓ Handle player registration flow
+  - ✓ Properly track app usage
 - ⬜ Create connection mechanism (User Stories #5-9)
 - ⬜ Implement basic game mechanics (User Stories #11-12)
 
@@ -115,6 +122,9 @@ These user stories are prioritized to ensure we focus on the most important feat
 
 | Date | Decision | Rationale |
 |------|----------|-----------|
+| May 3, 2025 | Added dedicated test helper methods to components | To maintain encapsulation while enabling proper component testing |
+| May 3, 2025 | Used class extension for service mocking | To ensure type compatibility and selective method overriding |
+| May 3, 2025 | Implemented PlayerStorageService with localStorage | To provide persistent storage for player data across sessions |
 | May 2, 2025 | Adapted tests to trim whitespace before assertions | To maintain readable component templates while ensuring reliable tests |
 | May 2, 2025 | Created dedicated CommonJS script for Tailwind generation | To resolve TypeScript compatibility issues with ES modules |
 | May 1, 2025 | Updated to Tailwind CSS v4 with dedicated PostCSS plugin | To fix build configuration and leverage the latest Tailwind capabilities |
@@ -139,11 +149,11 @@ These user stories are prioritized to ensure we focus on the most important feat
 
 ## Next Steps
 
-1. Complete the Refactor phase for player registration component
-2. Set up local storage service with appropriate tests
-3. Integrate player registration with local storage
-4. Begin connection mechanism implementation
-5. Create basic game screen layout
+1. Enhance game screen UI with improved styling
+2. Begin connection mechanism implementation
+3. Set up connection request management
+4. Create connection list display component
+5. Implement shareable link generation
 
 ## Technology Choices
 
@@ -158,11 +168,14 @@ These user stories are prioritized to ensure we focus on the most important feat
 - **Component Testing**: @web/test-runner (for browser-based component testing)
 - **Test Helpers**: @open-wc/testing for component fixtures and assertions
 - **Text Content Testing**: Use `.trim()` for consistent assertions
+- **Service Mocking**: Class extension pattern with explicit method overrides
+- **Component State Testing**: Dedicated public test helper methods
 
 ### Frontend Technologies
 - **Web Components**: Lit
 - **Best Practices**: Open WC principles (adapted for Vite)
 - **Styling**: Tailwind CSS with dedicated build script
+- **Data Persistence**: localStorage with service abstraction
 
 ### API Selection
 We will use the **friends-connect** API for handling player connections. This is a Rust library specifically designed for connecting players in game applications.
