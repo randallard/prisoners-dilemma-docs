@@ -38,13 +38,13 @@ We will commit to making the smallest possible code changes with each iteration,
 
 ## User Stories
 
-We've created a comprehensive set of [user stories](/docs/technical/user-stories.html) to guide our development process. Key user stories include:
+We've created a comprehensive set of [user stories](/prisoners-dilemma-docs/docs/technical/user-stories) to guide our development process. Key user stories include:
 
 - Player registration and local storage functionality
 - Connection management between players
 - Game initiation and statistics tracking
 
-These user stories are prioritized to ensure we focus on the most important features first. See the full [user stories document](/docs/technical/user-stories.html) for details.
+These user stories are prioritized to ensure we focus on the most important features first. See the full [user stories document](/prisoners-dilemma-docs/docs/technical/user-stories) for details.
 
 ## Core App Functionality
 
