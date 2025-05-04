@@ -11,8 +11,8 @@ This document serves as a living record of our project plan, current status, and
 
 ## Current Status
 
-**Phase**: Core Implementation (Data Management/Local Storage Implementation Complete)  
-**Last Updated**: May 3, 2025
+**Phase**: Core Implementation (Debugging Component Integration Issues)  
+**Last Updated**: May 4, 2025
 
 ## Project Vision
 
@@ -97,7 +97,10 @@ These user stories are prioritized to ensure we focus on the most important feat
 - ✓ Integrate player storage with game app
   - ✓ Display player info and open count in game screen
   - ✓ Handle player registration flow
-  - ✓ Properly track app usage
+  - ✓ Track app usage
+- ⚠️ Resolve component integration issues (currently debugging)
+  - ⚠️ Fix player registration to game screen transition
+  - ⚠️ Ensure proper component initialization and connection
 - ⬜ Create connection mechanism (User Stories #5-9)
 - ⬜ Implement basic game mechanics (User Stories #11-12)
 
@@ -122,6 +125,7 @@ These user stories are prioritized to ensure we focus on the most important feat
 
 | Date | Decision | Rationale |
 |------|----------|-----------|
+| May 4, 2025 | Established debugging checklist for web component issues | To provide a systematic approach to troubleshooting component integration problems |
 | May 3, 2025 | Added dedicated test helper methods to components | To maintain encapsulation while enabling proper component testing |
 | May 3, 2025 | Used class extension for service mocking | To ensure type compatibility and selective method overriding |
 | May 3, 2025 | Implemented PlayerStorageService with localStorage | To provide persistent storage for player data across sessions |
@@ -149,11 +153,34 @@ These user stories are prioritized to ensure we focus on the most important feat
 
 ## Next Steps
 
-1. Enhance game screen UI with improved styling
-2. Begin connection mechanism implementation
-3. Set up connection request management
-4. Create connection list display component
-5. Implement shareable link generation
+1. Complete debugging of component integration issues
+2. Verify proper initialization and connection between components
+3. Ensure reliable player registration flow
+4. Begin connection mechanism implementation
+5. Set up connection request management
+
+## Debugging Process Improvements
+
+Based on recent debugging challenges, we've established a systematic approach to troubleshooting web component integration issues:
+
+1. **Broaden view before diving deep**
+   - Examine entry points (index.html) to understand component connections
+   - Review component lifecycle and initialization sequence
+   - Check all relevant files, not just component implementations
+
+2. **Systematic component testing**
+   - Test components in isolation before integration
+   - Verify event propagation across component boundaries
+   - Add temporary visual indicators for state changes
+   - Use browser dev tools to inspect actual DOM structure
+
+3. **Structured debugging process**
+   - Start with entry point examination
+   - Verify component registration and initialization
+   - Check event listener setup and options
+   - Validate property bindings and data flow
+
+These improvements will help prevent similar issues in future development cycles and provide a more efficient approach to resolving complex component interactions.
 
 ## Technology Choices
 
@@ -172,7 +199,7 @@ These user stories are prioritized to ensure we focus on the most important feat
 - **Component State Testing**: Dedicated public test helper methods
 
 ### Frontend Technologies
-- **Web Components**: Lit
+- **Web Components**: Lit with Shadow DOM
 - **Best Practices**: Open WC principles (adapted for Vite)
 - **Styling**: Tailwind CSS with dedicated build script
 - **Data Persistence**: localStorage with service abstraction
