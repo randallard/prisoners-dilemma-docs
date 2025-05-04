@@ -11,7 +11,7 @@ This document serves as a living record of our project plan, current status, and
 
 ## Current Status
 
-**Phase**: Core Implementation (Debugging Component Integration Issues)  
+**Phase**: Core Implementation (Connection Mechanism Development)  
 **Last Updated**: May 4, 2025
 
 ## Project Vision
@@ -49,13 +49,13 @@ These user stories are prioritized to ensure we focus on the most important feat
 ## Core App Functionality
 
 ### 1. Game Mechanics
-- ⬜ Simple initial version showing "The Game" screen
+- ✓ Simple initial version showing "The Game" screen
 - ✓ Display of player names
 - ✓ Counter showing how many times each player has opened the game
 - ⬜ *(Future)* Full Prisoner's Dilemma rules and scoring
 
 ### 2. Social Features
-- ⬜ Connect with friends via shareable links (using friends-connect API)
+- 🔄 Connect with friends via shareable links (using friends-connect API) - In Progress
 - ⬜ Maintain a connections list with status indicators
 - ⬜ Custom naming of connections
 - ⬜ Connection request management (creation and deletion)
@@ -68,7 +68,7 @@ These user stories are prioritized to ensure we focus on the most important feat
 
 ### 4. Minimal Viable Product
 - ✓ Players can register with a name
-- ⬜ Players can connect via shareable links
+- 🔄 Players can connect via shareable links - In Progress
 - ✓ Basic game screen shows player names
 - ✓ Count and display number of game opens per player
 - ✓ Local data persistence
@@ -98,10 +98,15 @@ These user stories are prioritized to ensure we focus on the most important feat
   - ✓ Display player info and open count in game screen
   - ✓ Handle player registration flow
   - ✓ Track app usage
-- ⚠️ Resolve component integration issues (currently debugging)
-  - ⚠️ Fix player registration to game screen transition
-  - ⚠️ Ensure proper component initialization and connection
-- ⬜ Create connection mechanism (User Stories #5-9)
+- ✓ Resolve component integration issues
+  - ✓ Fix player registration to game screen transition
+  - ✓ Ensure proper component initialization and connection
+- 🔄 Create connection mechanism (User Stories #5-9) - In Progress
+  - ✓ Design ConnectionService interface and test structure (Red phase)
+  - ⬜ Implement ConnectionService to pass tests (Green phase)
+  - ⬜ Design connection UI components and tests
+  - ⬜ Implement connection UI components
+  - ⬜ Integrate connection management with game app
 - ⬜ Implement basic game mechanics (User Stories #11-12)
 
 ### Phase 3: Testing & Refinement
@@ -125,6 +130,7 @@ These user stories are prioritized to ensure we focus on the most important feat
 
 | Date | Decision | Rationale |
 |------|----------|-----------|
+| May 4, 2025 | Created connection service test structure | Following TDD approach for implementing connection mechanism |
 | May 4, 2025 | Established debugging checklist for web component issues | To provide a systematic approach to troubleshooting component integration problems |
 | May 3, 2025 | Added dedicated test helper methods to components | To maintain encapsulation while enabling proper component testing |
 | May 3, 2025 | Used class extension for service mocking | To ensure type compatibility and selective method overriding |
@@ -153,34 +159,29 @@ These user stories are prioritized to ensure we focus on the most important feat
 
 ## Next Steps
 
-1. Complete debugging of component integration issues
-2. Verify proper initialization and connection between components
-3. Ensure reliable player registration flow
-4. Begin connection mechanism implementation
-5. Set up connection request management
+1. Implement ConnectionService to pass the failing tests (Green phase)
+2. Refactor ConnectionService as needed (Refactor phase)
+3. Design connection UI components with failing tests
+4. Implement connection UI components to pass tests
+5. Integrate connection management with game app
 
-## Debugging Process Improvements
+## Current Focus: ConnectionService Implementation
 
-Based on recent debugging challenges, we've established a systematic approach to troubleshooting web component integration issues:
+We've created the test structure and interface for our ConnectionService, following our TDD approach. The tests are currently in the "Red" phase (failing), as expected. Our next immediate steps are:
 
-1. **Broaden view before diving deep**
-   - Examine entry points (index.html) to understand component connections
-   - Review component lifecycle and initialization sequence
-   - Check all relevant files, not just component implementations
+1. Implement the ConnectionService methods one by one:
+   - `generateConnectionLink()` - For creating shareable links
+   - `getConnections()` - For retrieving all connections
+   - `getConnectionById()` - For finding specific connections
+   - `getConnectionsByStatus()` - For filtering connections by status
+   - `acceptConnection()` - For accepting incoming connections
+   - `registerIncomingConnection()` - For handling connection requests
+   - `deleteConnection()` - For removing connections
 
-2. **Systematic component testing**
-   - Test components in isolation before integration
-   - Verify event propagation across component boundaries
-   - Add temporary visual indicators for state changes
-   - Use browser dev tools to inspect actual DOM structure
+2. After implementing each method, run the tests to ensure they pass
+3. Once all tests pass, review for potential refactoring opportunities
 
-3. **Structured debugging process**
-   - Start with entry point examination
-   - Verify component registration and initialization
-   - Check event listener setup and options
-   - Validate property bindings and data flow
-
-These improvements will help prevent similar issues in future development cycles and provide a more efficient approach to resolving complex component interactions.
+This ConnectionService will form the foundation for our social features, enabling players to connect with friends and play the Prisoner's Dilemma game together.
 
 ## Technology Choices
 
