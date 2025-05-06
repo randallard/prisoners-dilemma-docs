@@ -11,8 +11,8 @@ This document serves as a living record of our project plan, current status, and
 
 ## Current Status
 
-**Phase**: Core Implementation (Connection Mechanism Development)  
-**Last Updated**: May 4, 2025
+**Phase**: Core Implementation (Connection UI Development)  
+**Last Updated**: May 6, 2025
 
 ## Project Vision
 
@@ -103,7 +103,8 @@ These user stories are prioritized to ensure we focus on the most important feat
   - ✓ Ensure proper component initialization and connection
 - 🔄 Create connection mechanism (User Stories #5-9) - In Progress
   - ✓ Design ConnectionService interface and test structure (Red phase)
-  - ⬜ Implement ConnectionService to pass tests (Green phase)
+  - ✓ Implement ConnectionService to pass tests (Green phase)
+  - ⬜ Refactor ConnectionService for optimization (Refactor phase)
   - ⬜ Design connection UI components and tests
   - ⬜ Implement connection UI components
   - ⬜ Integrate connection management with game app
@@ -130,6 +131,8 @@ These user stories are prioritized to ensure we focus on the most important feat
 
 | Date | Decision | Rationale |
 |------|----------|-----------|
+| May 5, 2025 | Implemented ConnectionService methods using Array methods | Standard JS Array methods provide clear, readable code suitable for the expected data volume |
+| May 5, 2025 | Structured ConnectionService implementation by dependency order | Creates a natural progression of complexity and enables testing of dependent functionality |
 | May 4, 2025 | Created connection service test structure | Following TDD approach for implementing connection mechanism |
 | May 4, 2025 | Established debugging checklist for web component issues | To provide a systematic approach to troubleshooting component integration problems |
 | May 3, 2025 | Added dedicated test helper methods to components | To maintain encapsulation while enabling proper component testing |
@@ -159,29 +162,29 @@ These user stories are prioritized to ensure we focus on the most important feat
 
 ## Next Steps
 
-1. Implement ConnectionService to pass the failing tests (Green phase)
-2. Refactor ConnectionService as needed (Refactor phase)
-3. Design connection UI components with failing tests
-4. Implement connection UI components to pass tests
+1. Refactor ConnectionService for optimization and improved maintainability (Refactor phase)
+2. Design connection UI components with failing tests (Red phase)
+3. Implement connection UI components to pass tests (Green phase)
+4. Refactor connection UI components (Refactor phase)
 5. Integrate connection management with game app
 
-## Current Focus: ConnectionService Implementation
+## Current Focus: Connection UI Components Development
 
-We've created the test structure and interface for our ConnectionService, following our TDD approach. The tests are currently in the "Red" phase (failing), as expected. Our next immediate steps are:
+We've successfully completed the ConnectionService implementation, and all tests are now passing. This marks the completion of the "Green" phase for this component. Our next focus will be:
 
-1. Implement the ConnectionService methods one by one:
-   - `generateConnectionLink()` - For creating shareable links
-   - `getConnections()` - For retrieving all connections
-   - `getConnectionById()` - For finding specific connections
-   - `getConnectionsByStatus()` - For filtering connections by status
-   - `acceptConnection()` - For accepting incoming connections
-   - `registerIncomingConnection()` - For handling connection requests
-   - `deleteConnection()` - For removing connections
+1. Review the ConnectionService implementation for potential refactoring opportunities
+2. Begin designing the connection UI components:
+   - Connection creation UI for generating shareable links
+   - Connection list UI for displaying all connections
+   - Connection detail UI for showing connection status and actions
+   - Connection request handling UI for accepting/rejecting requests
 
-2. After implementing each method, run the tests to ensure they pass
-3. Once all tests pass, review for potential refactoring opportunities
+After design, we'll follow our TDD approach:
+1. Create failing tests for each UI component
+2. Implement the components to pass the tests
+3. Refactor for optimization and code quality
 
-This ConnectionService will form the foundation for our social features, enabling players to connect with friends and play the Prisoner's Dilemma game together.
+These components will provide the user interface for the connection mechanism, allowing players to connect with friends and initiate games.
 
 ## Technology Choices
 
