@@ -137,6 +137,8 @@ These user stories are prioritized to ensure we focus on the most important feat
 
 | Date | Decision | Rationale |
 |------|----------|-----------|
+| May 7, 2025 | Documented storage options beyond localStorage | To address potential storage limitations as game data grows and to prepare for advanced features requiring more storage |
+| May 7, 2025 | Documented comprehensive code improvement recommendations | To provide a roadmap for enhancing code quality, architecture, and performance |
 | May 7, 2025 | Refactored PlayerStorageService for immutability | Enhanced predictability and eliminated side effects while maintaining test compatibility |
 | May 7, 2025 | Refactored ConnectionService for immutability | Improved predictability, maintainability, and data integrity by eliminating state mutations |
 | May 7, 2025 | Used spread operator for object copying | Provides concise syntax for creating copies, suitable for simple data structures, and consistent with modern JavaScript practices |
