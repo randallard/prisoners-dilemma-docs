@@ -11,8 +11,8 @@ This document serves as a living record of our project plan, current status, and
 
 ## Current Status
 
-**Phase**: Core Implementation (Connection UI Development)  
-**Last Updated**: May 6, 2025
+**Phase**: Core Implementation (Connection UI Component Design)  
+**Last Updated**: May 7, 2025
 
 ## Project Vision
 
@@ -64,6 +64,7 @@ These user stories are prioritized to ensure we focus on the most important feat
 - ✓ Local storage for all game data (player registration & stats complete)
 - ✓ Type-safe error handling with Result pattern
 - ✓ Complete adoption of Result pattern across codebase (no backward compatibility)
+- ✓ Immutable data patterns for service implementations
 - ⬜ Track game state and history with each connection
 - ⬜ Store player preferences
 - ⬜ Downloadable backup and restore functionality
@@ -108,6 +109,8 @@ These user stories are prioritized to ensure we focus on the most important feat
   - ✓ Implement ConnectionService to pass tests (Green phase)
   - ✓ Refactor ConnectionService with type-safe Result pattern (Refactor phase)
   - ✓ Remove backward compatibility layer and update all consumers to use Result pattern
+  - ✓ Refactor ConnectionService to use immutable data patterns
+  - ✓ Refactor PlayerStorageService to use immutable data patterns
   - ⬜ Design connection UI components and tests
   - ⬜ Implement connection UI components
   - ⬜ Integrate connection management with game app
@@ -134,6 +137,9 @@ These user stories are prioritized to ensure we focus on the most important feat
 
 | Date | Decision | Rationale |
 |------|----------|-----------|
+| May 7, 2025 | Refactored PlayerStorageService for immutability | Enhanced predictability and eliminated side effects while maintaining test compatibility |
+| May 7, 2025 | Refactored ConnectionService for immutability | Improved predictability, maintainability, and data integrity by eliminating state mutations |
+| May 7, 2025 | Used spread operator for object copying | Provides concise syntax for creating copies, suitable for simple data structures, and consistent with modern JavaScript practices |
 | May 6, 2025 | Removed all backward compatibility layers | Clean break eliminates technical debt and forces update of all consumers to the Result pattern |
 | May 6, 2025 | Created ResultUtils utility library | Centralizes common Result operations and promotes consistent handling across components |
 | May 6, 2025 | Implemented Result pattern for error handling | Provides explicit, type-safe error handling without relying on exceptions or null checks |
@@ -169,42 +175,52 @@ These user stories are prioritized to ensure we focus on the most important feat
 
 ## Next Steps
 
-1. Design connection UI components with error type handling
-2. Create ResultUtils visualization helpers for connection UI
-3. Implement connection UI components using the Result pattern
-4. Integrate connection management with game app
-5. Begin implementing game mechanics
+1. ✓ Apply immutable patterns to the PlayerStorageService
+2. Design connection UI components with immutability and error type handling
+3. Create UI utility helpers for immutable state management
+4. Implement connection UI components using the Result pattern and immutable data
+5. Integrate connection management with game app
+6. Begin implementing game mechanics
 
-## Current Focus: Connection UI Components Development with Result Pattern
+## Current Focus: Connection UI Components Design with Immutable State
 
-We've successfully completed the full migration to the Result pattern across our codebase, removing all backward compatibility layers. All services now exclusively return Results, and all components have been updated to handle these Results correctly. All tests are now passing with the new architecture.
+With both the ConnectionService and PlayerStorageService successfully refactored to use immutable patterns, we're now ready to begin designing and implementing the connection UI components. We've established a solid foundation with:
 
-Our next focus will be designing and implementing connection UI components that utilize the Result pattern from the start:
+- Type-safe error handling using the Result pattern
+- Immutable data patterns for predictable state management
+- Comprehensive testing for all core functionality
+- Clear separation of concerns between services and UI components
+
+Our next focus will be designing and implementing connection UI components that utilize both the Result pattern and immutable state management from the start:
 
 1. Connection Creation Component:
    - Generate shareable links with proper error handling
    - Display specific UI for each potential error type
+   - Use immutable state updates for UI transitions
    - Provide clear success indicators for link generation
 
 2. Connection List Component:
    - Display all connections with status indicators
    - Handle empty states and error conditions gracefully
+   - Implement immutable list operations for updates
    - Include visual distinction between different connection states
 
 3. Connection Detail Component:
    - Show detailed information about a specific connection
    - Provide status-specific actions (accept, delete, etc.)
+   - Use immutable state transitions for UI updates
    - Include proper error handling for all operations
 
 4. Connection Request Component:
    - Allow accepting or rejecting incoming connection requests
    - Display appropriate messaging based on request status
    - Handle validation and error cases with specific UI
+   - Implement immutable state updates for request handling
 
-Each component will be developed using our TDD approach:
-1. Design components with error state handling in mind
+Each component will be developed using our TDD approach with immutability in mind:
+1. Design components with error state handling and immutable updates
 2. Create failing tests for each component (Red phase)
-3. Implement components to handle both success and error Results (Green phase)
+3. Implement components using immutable patterns (Green phase)
 4. Refactor for optimization and code quality (Refactor phase)
 
 ## Technology Choices
@@ -229,6 +245,7 @@ Each component will be developed using our TDD approach:
 - **Styling**: Tailwind CSS with dedicated build script
 - **Data Persistence**: localStorage with service abstraction
 - **Error Handling**: Result pattern for type-safe error handling
+- **State Management**: Immutable data patterns to prevent mutation
 - **Result Utilities**: Dedicated ResultUtils library for common operations
 
 ### API Selection
@@ -246,3 +263,5 @@ We will use the **friends-connect** API for handling player connections. This is
 - How will we handle edge cases like connection failures?
 - Should we create a centralized error reporting service?
 - What metrics should we collect about error frequency and types?
+- How do we best balance immutability with performance for complex data structures?
+- Should we adopt a dedicated immutability library for more complex state management?
