@@ -12,7 +12,7 @@ This document serves as a living record of our project plan, current status, and
 ## Current Status
 
 **Phase**: Core Implementation (Connection UI Component Design)  
-**Last Updated**: May 7, 2025
+**Last Updated**: May 8, 2025
 
 ## Project Vision
 
@@ -137,6 +137,7 @@ These user stories are prioritized to ensure we focus on the most important feat
 
 | Date | Decision | Rationale |
 |------|----------|-----------|
+| May 8, 2025 | Decided against PlayerStorageService [increased immutability](https://claude.ai/share/aa0dd37e-1b27-4999-b1b9-a91b94e10842) | to move forward more quickly, focus on functionality in this implementation |
 | May 7, 2025 | Documented storage options beyond localStorage | To address potential storage limitations as game data grows and to prepare for advanced features requiring more storage |
 | May 7, 2025 | Documented comprehensive code improvement recommendations | To provide a roadmap for enhancing code quality, architecture, and performance |
 | May 7, 2025 | Refactored PlayerStorageService for immutability | Enhanced predictability and eliminated side effects while maintaining test compatibility |
@@ -175,55 +176,51 @@ These user stories are prioritized to ensure we focus on the most important feat
 </div>
 </details>
 
-## Next Steps
+## Current Focus: Connection UI Components Development with Lit State Management
 
-1. ✓ Apply immutable patterns to the PlayerStorageService
-2. Design connection UI components with immutability and error type handling
-3. Create UI utility helpers for immutable state management
-4. Implement connection UI components using the Result pattern and immutable data
-5. Integrate connection management with game app
-6. Begin implementing game mechanics
+We've successfully refactored the ConnectionService to use immutable patterns, further improving our codebase quality. This builds upon our previous migration to the Result pattern and sets a strong foundation for our upcoming UI components.
 
-## Current Focus: Connection UI Components Design with Immutable State
+Following an assessment of state management options, we've decided to **continue using Lit's built-in reactive properties** for component state management, while leveraging our existing patterns. This decision is documented in the [State Management Strategy](/prisoners-dilemma-docs/docs/technical/state-management) document.
 
-With both the ConnectionService and PlayerStorageService successfully refactored to use immutable patterns, we're now ready to begin designing and implementing the connection UI components. We've established a solid foundation with:
-
-- Type-safe error handling using the Result pattern
-- Immutable data patterns for predictable state management
-- Comprehensive testing for all core functionality
-- Clear separation of concerns between services and UI components
-
-Our next focus will be designing and implementing connection UI components that utilize both the Result pattern and immutable state management from the start:
+Our next focus will be designing and implementing connection UI components that utilize both the Result pattern and Lit's reactive properties:
 
 1. Connection Creation Component:
    - Generate shareable links with proper error handling
    - Display specific UI for each potential error type
-   - Use immutable state updates for UI transitions
+   - Use Lit's `@state` decorator for reactive UI updates
    - Provide clear success indicators for link generation
 
 2. Connection List Component:
    - Display all connections with status indicators
    - Handle empty states and error conditions gracefully
-   - Implement immutable list operations for updates
+   - Use custom events for component communication
    - Include visual distinction between different connection states
 
 3. Connection Detail Component:
    - Show detailed information about a specific connection
    - Provide status-specific actions (accept, delete, etc.)
-   - Use immutable state transitions for UI updates
+   - Implement error type-based UI responses
    - Include proper error handling for all operations
 
 4. Connection Request Component:
    - Allow accepting or rejecting incoming connection requests
    - Display appropriate messaging based on request status
    - Handle validation and error cases with specific UI
-   - Implement immutable state updates for request handling
+   - Leverage the Result pattern for operation outcomes
 
-Each component will be developed using our TDD approach with immutability in mind:
-1. Design components with error state handling and immutable updates
+Each component will be developed using our TDD approach with component composition in mind:
+1. Design component hierarchy using Lit patterns
 2. Create failing tests for each component (Red phase)
-3. Implement components using immutable patterns (Green phase)
+3. Implement components using Result pattern and Lit reactivity (Green phase)
 4. Refactor for optimization and code quality (Refactor phase)
+
+## Next Steps
+
+1. Design connection UI components with Lit state management
+2. Create connection component tests
+3. Implement connection UI components using the Result pattern and Lit reactivity
+4. Integrate connection management with game app
+5. Begin implementing game mechanics
 
 ## Technology Choices
 
@@ -247,8 +244,9 @@ Each component will be developed using our TDD approach with immutability in min
 - **Styling**: Tailwind CSS with dedicated build script
 - **Data Persistence**: localStorage with service abstraction
 - **Error Handling**: Result pattern for type-safe error handling
-- **State Management**: Immutable data patterns to prevent mutation
-- **Result Utilities**: Dedicated ResultUtils library for common operations
+- **State Management**: Lit's reactive properties with Result pattern
+- **Component Communication**: Custom events with strongly typed detail
+- **UI Error Handling**: Error type-based conditional rendering
 
 ### API Selection
 We will use the **friends-connect** API for handling player connections. This is a Rust library specifically designed for connecting players in game applications.
