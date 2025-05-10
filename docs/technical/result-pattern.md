@@ -1,3 +1,11 @@
+---
+layout: page
+title: Result Pattern
+nav_order: 3
+parent: Technical Documentation
+permalink: /docs/technical/result-pattern/
+---
+
 # Enhanced Architecture with Result Pattern
 
 ## Overview of Changes

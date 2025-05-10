@@ -11,8 +11,9 @@ This document serves as a living record of our project plan, current status, and
 
 ## Current Status
 
-**Phase**: Core Implementation (Connection UI Component Design)  
-**Last Updated**: May 8, 2025
+**Phase**: Core Implementation (Connection UI Components - Red Phase)  
+**Current TDD Phase**: RED - Writing tests for Connection UI Components  
+**Last Updated**: May 10, 2025
 
 ## Project Vision
 
@@ -22,7 +23,7 @@ To create an interactive application that allows friends to play the Prisoner's 
 
 This project follows **Test Driven Development (TDD)** principles with a **Red-Green-Refactor** workflow:
 
-1. **Red**: Write a failing test that defines the expected behavior
+1. **Red**: Write a failing test that defines the expected behavior *(CURRENT PHASE)*
 2. **Green**: Write the minimal code needed to make the test pass
 3. **Refactor**: Improve the code quality while maintaining passing tests
 
@@ -56,9 +57,9 @@ These user stories are prioritized to ensure we focus on the most important feat
 
 ### 2. Social Features
 - ✓ Connect with friends via shareable links (using enhanced connection service)
-- ⬜ Maintain a connections list with status indicators
-- ⬜ Custom naming of connections
-- ⬜ Connection request management (creation and deletion)
+- 🟡 Maintain a connections list with status indicators *(Red Phase)*
+- 🟡 Custom naming of connections *(Red Phase)*
+- 🟡 Connection request management (creation and deletion) *(Red Phase)*
 
 ### 3. Data Management
 - ✓ Local storage for all game data (player registration & stats complete)
@@ -104,14 +105,13 @@ These user stories are prioritized to ensure we focus on the most important feat
 - ✓ Resolve component integration issues
   - ✓ Fix player registration to game screen transition
   - ✓ Ensure proper component initialization and connection
-- ✓ Create connection mechanism (User Stories #5-9)
+- ⬅️ Create connection mechanism (User Stories #5-9)
   - ✓ Design ConnectionService interface and test structure (Red phase)
   - ✓ Implement ConnectionService to pass tests (Green phase)
   - ✓ Refactor ConnectionService with type-safe Result pattern (Refactor phase)
   - ✓ Remove backward compatibility layer and update all consumers to use Result pattern
   - ✓ Refactor ConnectionService to use immutable data patterns
-  - ✓ Refactor PlayerStorageService to use immutable data patterns
-  - ⬜ Design connection UI components and tests
+  - 🟡 **Design connection UI components and tests (Red Phase - CURRENT)**
   - ⬜ Implement connection UI components
   - ⬜ Integrate connection management with game app
 - ⬜ Implement basic game mechanics (User Stories #11-12)
@@ -137,6 +137,7 @@ These user stories are prioritized to ensure we focus on the most important feat
 
 | Date | Decision | Rationale |
 |------|----------|-----------|
+| May 10, 2025 | Started Red Phase for Connection UI Components | Beginning to write failing tests that define the expected behavior of our connection UI components |
 | May 8, 2025 | Decided against PlayerStorageService [increased immutability](https://claude.ai/share/aa0dd37e-1b27-4999-b1b9-a91b94e10842) | to move forward more quickly, focus on functionality in this implementation |
 | May 7, 2025 | Documented storage options beyond localStorage | To address potential storage limitations as game data grows and to prepare for advanced features requiring more storage |
 | May 7, 2025 | Documented comprehensive code improvement recommendations | To provide a roadmap for enhancing code quality, architecture, and performance |
@@ -176,51 +177,49 @@ These user stories are prioritized to ensure we focus on the most important feat
 </div>
 </details>
 
-## Current Focus: Connection UI Components Development with Lit State Management
+## Current Focus: Connection UI Components - Red Phase
 
-We've successfully refactored the ConnectionService to use immutable patterns, further improving our codebase quality. This builds upon our previous migration to the Result pattern and sets a strong foundation for our upcoming UI components.
+We are currently in the **Red Phase** of TDD for connection UI components. This means we are:
 
-Following an assessment of state management options, we've decided to **continue using Lit's built-in reactive properties** for component state management, while leveraging our existing patterns. This decision is documented in the [State Management Strategy](/prisoners-dilemma-docs/docs/technical/state-management) document.
+1. Writing failing tests that define the expected behavior of our connection components
+2. Designing component interfaces and public methods
+3. Establishing test patterns for event handling and Result pattern integration
+4. Creating comprehensive test suites for each planned component
 
-Our next focus will be designing and implementing connection UI components that utilize both the Result pattern and Lit's reactive properties:
+### Components Being Tested:
 
-1. Connection Creation Component:
-   - Generate shareable links with proper error handling
-   - Display specific UI for each potential error type
-   - Use Lit's `@state` decorator for reactive UI updates
-   - Provide clear success indicators for link generation
+1. **Connection Creation Component**:
+   - Tests for generating shareable links
+   - Tests for error handling using Result pattern
+   - Tests for UI state changes based on operation outcomes
+   - Tests for accessibility and user interaction
 
-2. Connection List Component:
-   - Display all connections with status indicators
-   - Handle empty states and error conditions gracefully
-   - Use custom events for component communication
-   - Include visual distinction between different connection states
+2. **Connection List Component**:
+   - Tests for displaying connection lists
+   - Tests for empty states and error conditions
+   - Tests for custom event dispatching
+   - Tests for connection state indicators
 
-3. Connection Detail Component:
-   - Show detailed information about a specific connection
-   - Provide status-specific actions (accept, delete, etc.)
-   - Implement error type-based UI responses
-   - Include proper error handling for all operations
+3. **Connection Detail Component**:
+   - Tests for displaying connection information
+   - Tests for status-based UI rendering
+   - Tests for operation controls (accept, delete, etc.)
+   - Tests for error state handling
 
-4. Connection Request Component:
-   - Allow accepting or rejecting incoming connection requests
-   - Display appropriate messaging based on request status
-   - Handle validation and error cases with specific UI
-   - Leverage the Result pattern for operation outcomes
+4. **Connection Request Component**:
+   - Tests for request acceptance and rejection
+   - Tests for validation error handling
+   - Tests for UI messaging based on request status
+   - Tests for Result pattern integration
 
-Each component will be developed using our TDD approach with component composition in mind:
-1. Design component hierarchy using Lit patterns
-2. Create failing tests for each component (Red phase)
-3. Implement components using Result pattern and Lit reactivity (Green phase)
-4. Refactor for optimization and code quality (Refactor phase)
+Each test suite is being designed to:
+- Use the Result pattern for operation outcomes
+- Leverage Lit's reactive properties for state management
+- Include both happy path and error scenarios
+- Test component communication via custom events
+- Ensure accessibility requirements are met
 
-## Next Steps
-
-1. Design connection UI components with Lit state management
-2. Create connection component tests
-3. Implement connection UI components using the Result pattern and Lit reactivity
-4. Integrate connection management with game app
-5. Begin implementing game mechanics
+Once all tests are written and failing properly (Red phase complete), we'll move to the Green phase to implement the minimal code to make these tests pass.
 
 ## Technology Choices
 
@@ -248,6 +247,54 @@ Each component will be developed using our TDD approach with component compositi
 - **Component Communication**: Custom events with strongly typed detail
 - **UI Error Handling**: Error type-based conditional rendering
 
+### TypeScript Event Handling Pattern
+
+We've established a comprehensive TypeScript pattern for handling custom events in our connection UI components:
+
+#### Implementation Details:
+
+1. **Strongly Typed Custom Events**
+   - Interfaces for event detail objects (e.g., `ConnectionEventDetail`)
+   - Extended `HTMLElementEventMap` globally to type custom events
+   - Defined events: `game-requested`, `connection-created`, `confirm-delete-connection`, `refresh-connections`, `play-with-connection`
+
+2. **Type-Safe Event Handlers**
+   - Handlers declared as `EventListener` interface for standard compatibility
+   - Implementation uses type assertions for proper type checking
+   - Bound handlers stored as class properties for clean lifecycle management
+
+3. **Typed Event Dispatching**
+   - Custom events with proper type parameters
+   - Events configured with `bubbles: true` and `composed: true` for Shadow DOM compatibility
+   - All events include strongly typed detail objects
+
+4. **Event Helper Methods**
+   - Generic `fireEvent<T>` method for consistent event dispatching
+   - Simplifies event creation while maintaining type safety
+   - Reduces boilerplate code across components
+
+```typescript
+// Example pattern:
+interface ConnectionEventDetail {
+  connectionId: string;
+  connectionName: string;
+}
+
+declare global {
+  interface HTMLElementEventMap {
+    'game-requested': CustomEvent<ConnectionEventDetail>;
+  }
+}
+
+protected fireEvent<T>(eventName: string, detail: T): void {
+  this.dispatchEvent(new CustomEvent(eventName, {
+    detail,
+    bubbles: true,
+    composed: true
+  }));
+}
+```
+
 ### API Selection
 We will use the **friends-connect** API for handling player connections. This is a Rust library specifically designed for connecting players in game applications.
 
@@ -265,3 +312,11 @@ We will use the **friends-connect** API for handling player connections. This is
 - What metrics should we collect about error frequency and types?
 - How do we best balance immutability with performance for complex data structures?
 - Should we adopt a dedicated immutability library for more complex state management?
+
+## Next Steps
+
+1. Complete Red Phase for all connection UI component tests
+2. Move to Green Phase - implement minimal code to pass tests
+3. Enter Refactor Phase - optimize implementation
+4. Integrate connection management with game app
+5. Begin implementing game mechanics
