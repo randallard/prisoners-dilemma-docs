@@ -54,8 +54,11 @@ This document outlines the user stories for the Prisoner's Dilemma game applicat
    - Priority: High
    - Acceptance Criteria:
      - Generate unique connection link button
-     - Easy copying of link to clipboard
+     - Easy copying of link to clipboard  
      - Visual confirmation of link generation
+     - Tab remains on "New Connection" after link generation to allow copying
+     - Connection link is displayed and accessible until user navigates away
+     - Clear visual indication that a new link has been generated
 
 7. **Friend Naming**:
    "As a player initiating a connection, I want to name my friend locally, so that I can easily identify who I'm playing with."
@@ -72,6 +75,9 @@ This document outlines the user stories for the Prisoner's Dilemma game applicat
      - Visual indicator of connection status
      - Filtering options for connection status
      - Automatic updates when status changes
+     - Ability to view and copy connection link for pending connections
+     - "View Link" or "Copy Link" option for pending connection items
+     - Clear indication that the link can be reshared with the intended friend
 
 9. **Connection Acceptance**:
    "As an invited player, I want to register and establish a connection when I visit an invitation link, so that I can play with the person who invited me."

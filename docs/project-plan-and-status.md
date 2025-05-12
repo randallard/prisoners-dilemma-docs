@@ -12,8 +12,8 @@ This document serves as a living record of our project plan, current status, and
 ## Current Status
 
 **Phase**: Core Implementation (Connection UI Components - Red Phase)  
-**Current TDD Phase**: RED - Writing tests for Connection UI Components  
-**Last Updated**: May 10, 2025
+**Current TDD Phase**: RED - Fixing failing tests for Connection UI Components  
+**Last Updated**: May 11, 2025
 
 ## Project Vision
 
@@ -70,12 +70,21 @@ These user stories are prioritized to ensure we focus on the most important feat
 - ⬜ Store player preferences
 - ⬜ Downloadable backup and restore functionality
 
-### 4. Minimal Viable Product
+### 4. User Experience
+- ✓ Dark mode support with system preference detection
+- ✓ Smooth theme transitions with toggle button
+- ✓ Persistent theme preference storage
+- ✓ Responsive design with Tailwind CSS
+- ✓ CSS Variables for theme-consistent Shadow DOM components
+- 🟡 Complete implementation of semantic CSS variables across all components
+
+### 5. Minimal Viable Product
 - ✓ Players can register with a name
 - ✓ Players can connect via shareable links 
 - ✓ Basic game screen shows player names
 - ✓ Count and display number of game opens per player
 - ✓ Local data persistence
+- ✓ Dark mode support
 
 ## Development Roadmap
 
@@ -105,6 +114,14 @@ These user stories are prioritized to ensure we focus on the most important feat
 - ✓ Resolve component integration issues
   - ✓ Fix player registration to game screen transition
   - ✓ Ensure proper component initialization and connection
+- ✓ **Dark Mode Implementation**
+  - ✓ Create DarkModeService following Result pattern
+  - ✓ Implement dark mode toggle component
+  - ✓ Add system preference detection
+  - ✓ Ensure persistent theme storage
+  - ✓ Update all components with dark mode classes
+  - ✓ Write comprehensive tests for dark mode functionality
+  - ✓ Resolve test runner conflicts by separating unit/component tests
 - ⬅️ Create connection mechanism (User Stories #5-9)
   - ✓ Design ConnectionService interface and test structure (Red phase)
   - ✓ Implement ConnectionService to pass tests (Green phase)
@@ -137,6 +154,9 @@ These user stories are prioritized to ensure we focus on the most important feat
 
 | Date | Decision | Rationale |
 |------|----------|-----------|
+| May 10, 2025 | Adopted separated unit/component test directories | Following testing tool conventions, unit tests (Vitest) are now in `test/unit/` mirroring source structure, while component tests (Web Test Runner) are in `test/components/`. This separation prevents test runner conflicts and follows each tool's best practices. |
+| May 10, 2025 | Chose happy-dom over jsdom for testing environment | Selected happy-dom for its superior Web Components and Shadow DOM support, 2-10x performance improvement for TDD workflow, better Vite/Vitest integration, and more accurate browser behavior emulation. These advantages outweigh the trade-off of a smaller community compared to jsdom. [Detailed analysis and recommendations](https://claude.ai/share/07e3d8f6-0e80-4bf1-8c79-90e01f4a900a) |
+| May 10, 2025 | Implemented dark mode support with toggle | Added comprehensive dark mode functionality with system preference detection, persistent storage, and smooth transitions to improve user experience |
 | May 10, 2025 | Started Red Phase for Connection UI Components | Beginning to write failing tests that define the expected behavior of our connection UI components |
 | May 8, 2025 | Decided against PlayerStorageService [increased immutability](https://claude.ai/share/aa0dd37e-1b27-4999-b1b9-a91b94e10842) | to move forward more quickly, focus on functionality in this implementation |
 | May 7, 2025 | Documented storage options beyond localStorage | To address potential storage limitations as game data grows and to prepare for advanced features requiring more storage |
@@ -232,10 +252,12 @@ Once all tests are written and failing properly (Red phase complete), we'll move
 ### Testing Strategy
 - **Unit Testing**: Vitest (for pure logic functions)
 - **Component Testing**: @web/test-runner (for browser-based component testing)
+- **Testing Environment**: happy-dom (chosen for superior Web Components support and performance) - [See detailed analysis](https://claude.ai/share/07e3d8f6-0e80-4bf1-8c79-90e01f4a900a)
 - **Test Helpers**: @open-wc/testing for component fixtures and assertions
 - **Text Content Testing**: Use `.trim()` for consistent assertions
 - **Service Mocking**: Result-based mocks replacing direct values
 - **Component State Testing**: Dedicated public test helper methods
+- **Test Organization**: Separated directories - `test/unit/` for unit tests, `test/components/` for component tests
 
 ### Frontend Technologies
 - **Web Components**: Lit with Shadow DOM
@@ -246,6 +268,30 @@ Once all tests are written and failing properly (Red phase complete), we'll move
 - **State Management**: Lit's reactive properties with Result pattern
 - **Component Communication**: Custom events with strongly typed detail
 - **UI Error Handling**: Error type-based conditional rendering
+- **Dark Mode**: Class-based dark mode with system preference detection
+
+### Dark Mode Implementation
+
+We've implemented a comprehensive dark mode system with:
+
+1. **DarkModeService**
+   - Follows Result pattern for error handling
+   - Detects system preference automatically
+   - Stores user preference in localStorage
+   - Provides theme toggle functionality
+   - Listens for system theme changes
+
+2. **DarkModeToggle Component**
+   - Accessible toggle button with ARIA labels
+   - Animated transition between themes
+   - Icon-based visual feedback
+   - Emits custom events for theme changes
+
+3. **Theme Application**
+   - Class-based dark mode (`dark` class on `<html>`)
+   - Smooth color transitions throughout the app
+   - All components updated with dark mode classes
+   - Prevents FOUC (Flash of Unstyled Content)
 
 ### TypeScript Event Handling Pattern
 
