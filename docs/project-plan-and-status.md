@@ -115,13 +115,13 @@ These user stories are prioritized to ensure we focus on the most important feat
   - ✓ Fix player registration to game screen transition
   - ✓ Ensure proper component initialization and connection
 - ✓ **Dark Mode Implementation**
-  - ✓ Create DarkModeService following Result pattern
-  - ✓ Implement dark mode toggle component
   - ✓ Add system preference detection
-  - ✓ Ensure persistent theme storage
   - ✓ Update all components with dark mode classes
   - ✓ Write comprehensive tests for dark mode functionality
   - ✓ Resolve test runner conflicts by separating unit/component tests
+  - ✓ Implement media query-based dark mode strategy
+  - ✓ Update CSS to use prefers-color-scheme media querieS
+  - ✓ Remove theme toggle and localStorage persistence 
 - ⬅️ Create connection mechanism (User Stories #5-9)
   - ✓ Design ConnectionService interface and test structure (Red phase)
   - ✓ Implement ConnectionService to pass tests (Green phase)
@@ -154,6 +154,7 @@ These user stories are prioritized to ensure we focus on the most important feat
 
 | Date | Decision | Rationale |
 |------|----------|-----------|
+| May 14, 2025 | Switched from class-based dark mode to media query strategy | Simplified theming implementation by relying on OS preferences via prefers-color-scheme media queries, removing the need for JavaScript toggles and state management. This reduces codebase complexity while maintaining responsive theme handling. |
 | May 10, 2025 | Adopted separated unit/component test directories | Following testing tool conventions, unit tests (Vitest) are now in `test/unit/` mirroring source structure, while component tests (Web Test Runner) are in `test/components/`. This separation prevents test runner conflicts and follows each tool's best practices. |
 | May 10, 2025 | Chose happy-dom over jsdom for testing environment | Selected happy-dom for its superior Web Components and Shadow DOM support, 2-10x performance improvement for TDD workflow, better Vite/Vitest integration, and more accurate browser behavior emulation. These advantages outweigh the trade-off of a smaller community compared to jsdom. [Detailed analysis and recommendations](https://claude.ai/share/07e3d8f6-0e80-4bf1-8c79-90e01f4a900a) |
 | May 10, 2025 | Implemented dark mode support with toggle | Added comprehensive dark mode functionality with system preference detection, persistent storage, and smooth transitions to improve user experience |
@@ -272,23 +273,10 @@ Once all tests are written and failing properly (Red phase complete), we'll move
 
 ### Dark Mode Implementation
 
-We've implemented a comprehensive dark mode system with:
+We've implemented a simplified dark mode system with:
 
-1. **DarkModeService**
-   - Follows Result pattern for error handling
-   - Detects system preference automatically
-   - Stores user preference in localStorage
-   - Provides theme toggle functionality
-   - Listens for system theme changes
-
-2. **DarkModeToggle Component**
-   - Accessible toggle button with ARIA labels
-   - Animated transition between themes
-   - Icon-based visual feedback
-   - Emits custom events for theme changes
-
-3. **Theme Application**
-   - Class-based dark mode (`dark` class on `<html>`)
+1. **Theme Application**
+   - Media query-based dark mode (@media (prefers-color-scheme: dark)) instead of class-based
    - Smooth color transitions throughout the app
    - All components updated with dark mode classes
    - Prevents FOUC (Flash of Unstyled Content)
