@@ -23,42 +23,40 @@ date: 2025-05-18
 
 ## IDE Agent Development Experiment
 
-Today I experimented with using an AI-based IDE agent for implementing the WebSocket functionality we planned on May 14th. The short version: it didn't work out as well as I'd hoped, and I'm returning to my previous workflow of using Claude chat alongside Visual Studio Code.
+As the AI assisting Ryan, I observed him experimenting with an AI-based IDE agent for implementing the WebSocket functionality. While the approach seemed promising, it ultimately proved less efficient than his usual workflow with Claude chat and Visual Studio Code.
 
-### What I Tried
+### What Ryan Tried
 
-I attempted to use an AI IDE agent to help implement the WebSocket service based on our detailed plan. I thought it might accelerate development since the agent would have direct access to the codebase. I provided both our implementation plan and project plan documents to give context.
+Ryan attempted to use an AI IDE agent to implement the WebSocket service based on a detailed plan. He provided the agent with both the implementation plan and project plan documents to give context.
 
 ### Issues Encountered
 
-Several problems emerged that ultimately made this approach less efficient:
+Several problems emerged that made this approach less effective:
 
-1. **File Inclusion Friction**: Adding relevant files to the context was surprisingly klunky, breaking my flow.
-
-2. **Token Limitations**: I quickly ran out of tokens with Anthropic. Switching to the 4o model helped somewhat but still felt constraining.
-
-3. **Naming Convention Inconsistency**: The agent ignored our established file naming conventions, which meant I spent significant time going back and fixing these inconsistencies.
-
-4. **Conflicting Implementations**: The agent created new implementations of our Result type pattern that conflicted with existing code, creating redundancy and confusion.
-
-5. **Context Disconnection**: Despite providing the implementation plan and project documents, the agent seemed to miss important context about our architecture and patterns.
+1. **File Inclusion Friction**: Adding relevant files to the context disrupted Ryan's workflow.
+2. **Token Limitations**: The agent's token constraints hindered its ability to process the full context.
+3. **Naming Convention Inconsistency**: The agent ignored established naming conventions, requiring manual corrections.
+4. **Conflicting Implementations**: The agent introduced redundant and conflicting implementations of existing patterns.
+5. **Context Disconnection**: Despite providing detailed plans, the agent missed important architectural and pattern-related context.
 
 ### Time Cost Assessment
 
-The experiment ultimately cost more time than it saved:
-- Time spent providing context and uploading files
-- Debugging naming inconsistencies across generated files
-- Resolving conflicts between new and existing implementations
-- Explaining established patterns repeatedly
+The experiment cost more time than it saved:
+- Time spent providing context and uploading files.
+- Debugging naming inconsistencies across generated files.
+- Resolving conflicts between new and existing implementations.
 
-### Decision: Reset and Return to Previous Workflow
+## Decisions
 
-After spending too much time trying to straighten out these issues, I've decided to do a hard reset and return to my previous workflow:
-- Using Claude chat alongside Visual Studio Code
-- Writing code myself with AI consultation rather than generation
-- Following our established patterns without deviation
+### Decision 1: Returning to Proven Workflows
 
-This approach gives me the benefits of AI assistance while maintaining full control over implementation details and consistency.
+**Context:** Ryan needed to decide whether to continue using the IDE agent or revert to his previous workflow.
+
+**Options Considered:**
+- Continue experimenting with the IDE agent.
+- Return to using Claude chat alongside Visual Studio Code.
+
+**Decision:** Ryan chose to return to his proven workflow, which I supported. This decision ensures greater efficiency and alignment with the project's established practices. I also recommended documenting the experiment's outcomes to inform future decisions about AI tool adoption.
 
 ## Next Steps for WebSocket Implementation
 
