@@ -11,9 +11,9 @@ This document serves as a living record of our project plan, current status, and
 
 ## Current Status
 
-**Phase**: Core Implementation (Connection UI Components - Red Phase)  
-**Current TDD Phase**: RED - Fixing failing tests for Connection UI Components  
-**Last Updated**: May 11, 2025
+**Phase**: Core Implementation (Connection UI Components - Green Phase)  
+**Current TDD Phase**: GREEN - Implementing code to pass tests for Connection API Service  
+**Last Updated**: May 19, 2025
 
 ## Project Vision
 
@@ -23,8 +23,8 @@ To create an interactive application that allows friends to play the Prisoner's 
 
 This project follows **Test Driven Development (TDD)** principles with a **Red-Green-Refactor** workflow:
 
-1. **Red**: Write a failing test that defines the expected behavior *(CURRENT PHASE)*
-2. **Green**: Write the minimal code needed to make the test pass
+1. **Red**: Write a failing test that defines the expected behavior
+2. **Green**: Write the minimal code needed to make the test pass *(CURRENT PHASE)*
 3. **Refactor**: Improve the code quality while maintaining passing tests
 
 We've established a **hybrid testing strategy** with:
@@ -36,6 +36,17 @@ We will commit to making the smallest possible code changes with each iteration,
 - Code remains clean, maintainable, and follows best practices
 - Technical debt is minimized through continuous refactoring
 - Development progress is measurable through test coverage
+
+### Focused AI Pairing Methodology
+
+We've adopted a structured approach called "Focused AI Pairing" for complex debugging and implementation tasks. This approach has proven particularly effective for the WebSocket implementation:
+
+1. **Single Issue Focus**: Address one problem at a time instead of the entire codebase
+2. **Staged Problem Analysis**: Analyze issues in stages before implementing solutions
+3. **Wait-For-Approval Workflow**: Request analysis, wait for approval, then proceed to implementation
+4. **Documented Decision Thinking**: Create visual diagrams of the solution approach for team reference
+
+This methodology allows us to leverage AI assistance without sacrificing architectural consistency or code quality. For details on our WebSocket testing implementation using this approach, see the [WebSocket Testing Flow](/prisoners-dilemma-docs/docs/technical/websocket-testing-flow/) diagram.
 
 ## User Stories
 
@@ -57,15 +68,17 @@ These user stories are prioritized to ensure we focus on the most important feat
 
 ### 2. Social Features
 - ✓ Connect with friends via shareable links (using enhanced connection service)
-- 🟡 Maintain a connections list with status indicators *(Red Phase)*
-- 🟡 Custom naming of connections *(Red Phase)*
-- 🟡 Connection request management (creation and deletion) *(Red Phase)*
+- 🟢 WebSocket service integration for real-time connection status *(Green Phase)*
+- 🟡 Maintain a connections list with status indicators *(Testing Phase)*
+- 🟡 Custom naming of connections *(Testing Phase)*
+- 🟡 Connection request management (creation and deletion) *(Testing Phase)*
 
 ### 3. Data Management
 - ✓ Local storage for all game data (player registration & stats complete)
 - ✓ Type-safe error handling with Result pattern
 - ✓ Complete adoption of Result pattern across codebase (no backward compatibility)
 - ✓ Immutable data patterns for service implementations
+- 🟢 WebSocket message handling with type safety *(Green Phase)*
 - ⬜ Track game state and history with each connection
 - ⬜ Store player preferences
 - ⬜ Downloadable backup and restore functionality
@@ -128,7 +141,14 @@ These user stories are prioritized to ensure we focus on the most important feat
   - ✓ Refactor ConnectionService with type-safe Result pattern (Refactor phase)
   - ✓ Remove backward compatibility layer and update all consumers to use Result pattern
   - ✓ Refactor ConnectionService to use immutable data patterns
-  - 🟡 **Design connection UI components and tests (Red Phase - CURRENT)**
+  - ✓ Design WebSocket API service tests (Red Phase)
+  - 🟢 **Implement WebSocket API service to pass tests (Green Phase - CURRENT)**
+    - ✓ Create [WebSocket Testing Flow](/prisoners-dilemma-docs/docs/technical/websocket-testing-flow/) for improved test reliability
+    - ✓ Implement connection state management
+    - 🟢 Implement message processing system with type safety
+    - 🟢 Integrate with Result pattern for error handling
+  - ⬜ Refactor WebSocket implementation (Refactor Phase)
+  - 🟡 Design connection UI components and tests (Red Phase)
   - ⬜ Implement connection UI components
   - ⬜ Integrate connection management with game app
 - ⬜ Implement basic game mechanics (User Stories #11-12)
@@ -154,6 +174,9 @@ These user stories are prioritized to ensure we focus on the most important feat
 
 | Date | Decision | Rationale |
 |------|----------|-----------|
+| May 19, 2025 | Adopted Focused AI Pairing methodology | Created a structured approach for AI assistance that maintains architectural consistency while accelerating development. This approach focuses on single issues, stages problem analysis, uses a wait-for-approval workflow, and documents decision thinking with visual diagrams. [Journal Entry #25](/prisoners-dilemma-docs/docs/journal/entry-025) contains more details. |
+| May 19, 2025 | Created WebSocket Testing Flow documentation | Visualized the WebSocket test flow to improve understanding and ensure reliable test implementation. This approach helped identify and fix key issues in the testing process, such as socket instance tracking and message handling. |
+| May 18, 2025 | Decided against full AI code generation | After experimentation with an IDE agent (documented in [Journal Entry #24](/prisoners-dilemma-docs/docs/journal/entry-024)), we found that maintaining architectural consistency and code quality was more challenging with full code generation. Switched to a collaborative approach where human developers maintain control of architecture. |
 | May 14, 2025 | Switched from class-based dark mode to media query strategy | Simplified theming implementation by relying on OS preferences via prefers-color-scheme media queries, removing the need for JavaScript toggles and state management. This reduces codebase complexity while maintaining responsive theme handling. |
 | May 10, 2025 | Adopted separated unit/component test directories | Following testing tool conventions, unit tests (Vitest) are now in `test/unit/` mirroring source structure, while component tests (Web Test Runner) are in `test/components/`. This separation prevents test runner conflicts and follows each tool's best practices. |
 | May 10, 2025 | Chose happy-dom over jsdom for testing environment | Selected happy-dom for its superior Web Components and Shadow DOM support, 2-10x performance improvement for TDD workflow, better Vite/Vitest integration, and more accurate browser behavior emulation. These advantages outweigh the trade-off of a smaller community compared to jsdom. [Detailed analysis and recommendations](https://claude.ai/share/07e3d8f6-0e80-4bf1-8c79-90e01f4a900a) |
@@ -198,49 +221,49 @@ These user stories are prioritized to ensure we focus on the most important feat
 </div>
 </details>
 
-## Current Focus: Connection UI Components - Red Phase
+## Current Focus: WebSocket API Service - Green Phase
 
-We are currently in the **Red Phase** of TDD for connection UI components. This means we are:
+We are currently in the **Green Phase** of TDD for the WebSocket API service implementation. This involves:
 
-1. Writing failing tests that define the expected behavior of our connection components
-2. Designing component interfaces and public methods
-3. Establishing test patterns for event handling and Result pattern integration
-4. Creating comprehensive test suites for each planned component
+1. Implementing the minimal code needed to make our tests pass
+2. Ensuring proper WebSocket connection management
+3. Creating a type-safe message processing system
+4. Integrating with our Result pattern for error handling
 
-### Components Being Tested:
+### Key Components Being Implemented:
 
-1. **Connection Creation Component**:
-   - Tests for generating shareable links
-   - Tests for error handling using Result pattern
-   - Tests for UI state changes based on operation outcomes
-   - Tests for accessibility and user interaction
+1. **WebSocket Connection Management**:
+   - Robust connection establishment and maintenance
+   - Proper handling of connection states and events
+   - Error detection and reporting through ApiError types
 
-2. **Connection List Component**:
-   - Tests for displaying connection lists
-   - Tests for empty states and error conditions
-   - Tests for custom event dispatching
-   - Tests for connection state indicators
+2. **Message Processing System**:
+   - Type-safe message handling with TypeScript interfaces
+   - Request-response mapping with unique request IDs
+   - Timeout handling for incomplete requests
 
-3. **Connection Detail Component**:
-   - Tests for displaying connection information
-   - Tests for status-based UI rendering
-   - Tests for operation controls (accept, delete, etc.)
-   - Tests for error state handling
+3. **Event-Based Communication**:
+   - Callback registration for different message types
+   - Event propagation to UI components
+   - Error event handling for network issues
 
-4. **Connection Request Component**:
-   - Tests for request acceptance and rejection
-   - Tests for validation error handling
-   - Tests for UI messaging based on request status
-   - Tests for Result pattern integration
+4. **Result Pattern Integration**:
+   - Consistent error handling across asynchronous operations
+   - Type-safe Result returns for all API methods
+   - Clear error type mapping for network and API errors
 
-Each test suite is being designed to:
-- Use the Result pattern for operation outcomes
-- Leverage Lit's reactive properties for state management
-- Include both happy path and error scenarios
-- Test component communication via custom events
-- Ensure accessibility requirements are met
+### Testing Methodology
 
-Once all tests are written and failing properly (Red phase complete), we'll move to the Green phase to implement the minimal code to make these tests pass.
+For the WebSocket implementation, we've created a detailed [WebSocket Testing Flow](/prisoners-dilemma-docs/docs/technical/websocket-testing-flow/) diagram to ensure our tests reliably verify component behavior. This approach has significantly improved our test reliability by:
+
+1. Properly tracking WebSocket instances throughout the test lifecycle
+2. Reliably capturing and verifying sent messages
+3. Simulating server responses in a controlled manner
+4. Managing asynchronous timing issues that previously caused flaky tests
+
+Our "Focused AI Pairing" methodology has been particularly effective for this implementation, allowing us to address complex testing issues in a structured, incremental way.
+
+Once the WebSocket API service implementation is complete and passing tests, we'll move to the Refactor phase to optimize the implementation while maintaining test coverage.
 
 ## Technology Choices
 
@@ -259,6 +282,7 @@ Once all tests are written and failing properly (Red phase complete), we'll move
 - **Service Mocking**: Result-based mocks replacing direct values
 - **Component State Testing**: Dedicated public test helper methods
 - **Test Organization**: Separated directories - `test/unit/` for unit tests, `test/components/` for component tests
+- **WebSocket Testing**: [Structured testing flow](/prisoners-dilemma-docs/docs/technical/websocket-testing-flow/) with reliable mock implementations
 
 ### Frontend Technologies
 - **Web Components**: Lit with Shadow DOM
@@ -270,6 +294,7 @@ Once all tests are written and failing properly (Red phase complete), we'll move
 - **Component Communication**: Custom events with strongly typed detail
 - **UI Error Handling**: Error type-based conditional rendering
 - **Dark Mode**: Class-based dark mode with system preference detection
+- **Real-time Communication**: WebSocket with type-safe message handling
 
 ### Dark Mode Implementation
 
@@ -349,8 +374,9 @@ We will use the **friends-connect** API for handling player connections. This is
 
 ## Next Steps
 
-1. Complete Red Phase for all connection UI component tests
-2. Move to Green Phase - implement minimal code to pass tests
-3. Enter Refactor Phase - optimize implementation
-4. Integrate connection management with game app
-5. Begin implementing game mechanics
+1. Complete Green Phase for WebSocket API Service
+2. Move to Refactor Phase for WebSocket implementation
+3. Resume Red Phase for connection UI component tests
+4. Implement connection UI components
+5. Integrate connection management with game app
+6. Begin implementing game mechanics
